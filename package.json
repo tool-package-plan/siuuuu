@@ -1,0 +1,21 @@
+{
+  "name": "template-generate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "plop": "tsc && plop"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "consola": "^2.15.3",
+    "inquirer": "^9.1.4",
+    "node-plop": "^0.31.0",
+    "ora": "^6.1.2"
+  }
+}
