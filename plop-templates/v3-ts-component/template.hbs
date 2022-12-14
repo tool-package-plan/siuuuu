@@ -5,9 +5,13 @@
 {{/if}}
 
 {{#if script}}
-  <script setup lang='ts'>
-
-  </script>
+  {{#if typescript}}
+    <script setup lang='ts'>
+    </script>
+  {{else}}
+    <script setup>
+    </script>
+  {{/if}}
 {{/if}}
 {{#if style}}
   <style lang='{{lang}}'>
