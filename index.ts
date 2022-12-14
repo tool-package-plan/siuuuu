@@ -1,3 +1,4 @@
+import conf from './config.js';
 import inquirer from 'inquirer';
 import v3TsComponent from './plop-templates/v3-ts-component/index.js';
 
