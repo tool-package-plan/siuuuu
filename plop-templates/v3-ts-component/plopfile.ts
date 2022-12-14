@@ -2,6 +2,7 @@ import type { NodePlopAPI } from 'node-plop';
 import path from 'path';
 import { cwd } from 'process';
 import { CSS_PROCESSORS } from '../shared.js';
+
 export default function (plop: NodePlopAPI) {
   plop.setGenerator('v3-ts-component', {
     description: 'generate vue3 component with typescript',
@@ -74,7 +75,7 @@ export default function (plop: NodePlopAPI) {
       },
     ],
     actions: (data: any) => {
-      const name = '{{properCase componentName}}';
+      const name = '{{dashCase componentName}}';
       const currentCwd = cwd();
       const relativePath = data.isGlobal
         ? `src/components/global/${name}/index.vue`

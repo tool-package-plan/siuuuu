@@ -2,3 +2,5 @@ node_modules
 plopfile.js
 *.js
 src
+*.d.ts
+!types/*
