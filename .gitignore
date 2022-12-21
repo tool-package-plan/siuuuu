@@ -4,3 +4,4 @@ plopfile.js
 src
 *.d.ts
 !types/*
+!env.d.ts

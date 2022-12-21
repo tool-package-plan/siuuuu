@@ -13,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/generator": "^7.20.5",
+    "@babel/parser": "^7.20.5",
+    "@babel/traverse": "^7.20.5",
+    "@babel/types": "^7.20.5",
     "chalk": "^5.2.0",
     "consola": "^2.15.3",
     "inquirer": "^9.1.4",

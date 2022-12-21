@@ -1,11 +1,8 @@
 import nodePlop from 'node-plop';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import chalk from 'chalk';
+import { getPlopFile } from '../shared.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const plopfilePath = path.resolve(__dirname, './plopfile.js');
+const plopfilePath = getPlopFile(import.meta.url);
 
 const plop = await nodePlop(plopfilePath);
 

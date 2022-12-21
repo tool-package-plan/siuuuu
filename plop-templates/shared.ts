@@ -1,3 +1,8 @@
+import conf from '../config.js';
+import { existsSync, PathLike } from 'fs';
+import { dirname, join, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
 type CssProcessor = 'less' | 'scss' | 'css' | 'sass';
 
 interface IChoice {
@@ -23,3 +28,29 @@ export const CSS_PROCESSORS: IChoice[] = [
     value: 'css',
   },
 ];
+
+export const getDirname = (metaUrl: string): string =>
+  dirname(fileURLToPath(metaUrl));
+
+export const getPlopFile = (
+  metaUrl: string,
+  filename: string = 'plopfile.js'
+): string => resolve(getDirname(metaUrl), filename);
+
+export const validateRequiredString = (
+  str: string,
+  t?: string
+): string | boolean => {
+  const flag = /^[\w\S.]+[\w\S]*$/.test(str);
+  if (!flag) {
+    return `${t},格式约束:非空格字符`;
+  }
+  return true;
+};
+
+export const isFileExist = (path: PathLike): boolean => existsSync(path);
+
+export const joinPath = (targetPath: string): string =>
+  join(conf.baseDir, targetPath);
+
+export const getRoutesPath = (): string => joinPath(conf.routesFilePath);

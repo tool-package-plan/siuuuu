@@ -1,5 +1,6 @@
 import type { NodePlopAPI } from 'node-plop';
 import path from 'path';
+import { createInputPlop } from '../snippet.js';
 import { cwd } from 'process';
 import { CSS_PROCESSORS } from '../shared.js';
 
@@ -7,17 +8,7 @@ export default function (plop: NodePlopAPI) {
   plop.setGenerator('v3-ts-component', {
     description: 'generate vue3 component with typescript',
     prompts: [
-      {
-        type: 'input',
-        name: 'componentName',
-        message: '请输入组件名',
-        validate(value: string) {
-          if (!value) {
-            return '请输入组件名';
-          }
-          return true;
-        },
-      },
+      createInputPlop('componentName', '请输入组件名', true),
       {
         type: 'checkbox',
         name: 'blocks',
