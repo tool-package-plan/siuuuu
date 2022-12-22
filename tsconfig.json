@@ -10,7 +10,8 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "moduleResolution": "NodeNext",
     "declaration": true,
-    "declarationDir": "./types"
+    // "declarationDir": "./types",
+    "outDir": "dist"
   },
   "include": ["index.d.ts", "**/*.ts"]
 }
