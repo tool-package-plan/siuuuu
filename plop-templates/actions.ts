@@ -1,21 +1,21 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { RouteRecordRaw } from 'vue-router';
 import { getRoutesPath, isFileExist } from './shared.js';
 import { parse } from '@babel/parser';
-import * as type from '@babel/types';
-import generator from '@babel/generator';
-import traverse from '@babel/traverse';
+import { editRouterAst } from './utils/ast.js';
 
-const generateRouteItem = (
-  routerData: Record<string, any>
-): RouteRecordRaw => ({
+export declare interface IRouteConfig {
+  name: string;
+  path: string;
+  component: string;
+}
+
+const generateRouteItem = (routerData: Record<string, any>): IRouteConfig => ({
   name: routerData.name,
   path: routerData.path,
-  component: () => import(routerData.component),
+  component: routerData.component,
 });
 
-const modifyRouteFile = (routeItem: RouteRecordRaw) => {
-  console.log(getRoutesPath(), routeItem);
+const modifyRouteFile = (routeItem: IRouteConfig) => {
   const routePath = getRoutesPath();
   if (isFileExist(routePath)) {
     console.log('file loaded');
@@ -24,42 +24,8 @@ const modifyRouteFile = (routeItem: RouteRecordRaw) => {
       errorRecovery: true,
       sourceType: 'module',
     });
-    // type.traverse(routeAST, (node) => {
-    //   if (type.isIdentifier(node) && node.name === 'routes') {
-    //     console.log(node);
-    //   }
-    // });
-    traverse.default(routeAST, {
-      enter(path: any) {
-        if (type.isIdentifier(path.node) && path.node.name === 'routes') {
-          // console.log(path.node, path);
-          if (type.isObjectProperty(path.parent)) {
-            // console.log(path.parent.value);
-            const insertNode = type.objectExpression([
-              type.objectProperty(
-                type.identifier('name'),
-                type.stringLiteral('route')
-              ),
-              type.objectProperty(
-                type.identifier('path'),
-                type.stringLiteral('/')
-              ),
-              type.objectProperty(
-                type.identifier('component'),
-                type.arrowFunctionExpression(
-                  [],
-                  type.callExpression(type.import(), [
-                    type.stringLiteral('@/views/index'),
-                  ])
-                )
-              ),
-            ]);
-            path.parent.value.elements.push(insertNode);
-          }
-        }
-      },
-    });
-    writeFileSync(routePath, generator.default(routeAST).code, {
+
+    writeFileSync(routePath, editRouterAst(routeAST, routeItem), {
       encoding: 'utf-8',
     });
   } else {
