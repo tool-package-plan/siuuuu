@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import nodePlop from 'node-plop';
-import { getPlopFile } from '../shared.js';
+import { getPlopFile } from '../utils/shared.js';
 
 const plopFilePath = getPlopFile(import.meta.url);
 

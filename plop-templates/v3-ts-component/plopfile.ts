@@ -2,7 +2,7 @@ import type { NodePlopAPI } from 'node-plop';
 import path from 'path';
 import { createInputPlop } from '../snippet.js';
 import { cwd } from 'process';
-import { CSS_PROCESSORS } from '../shared.js';
+import { CSS_PROCESSORS } from '../utils/shared.js';
 
 export default function (plop: NodePlopAPI) {
   plop.setGenerator('v3-ts-component', {

@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { getRoutesPath, isFileExist } from './shared.js';
+import { getRoutesPath, isFileExist } from './utils/shared.js';
 import { parse } from '@babel/parser';
 import { editRouterAst } from './utils/ast.js';
 

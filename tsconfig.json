@@ -13,5 +13,6 @@
     // "declarationDir": "./types",
     "outDir": "dist"
   },
-  "include": ["index.d.ts", "**/*.ts"]
+  "include": ["**/*.ts", "bin/index.js"],
+  "exclude": ["dist/**/*.d.ts", "bin"]
 }
