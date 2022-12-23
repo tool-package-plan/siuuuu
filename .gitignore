@@ -6,3 +6,4 @@ src
 !types/*
 !env.d.ts
 dist
+!bin/*
