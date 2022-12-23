@@ -1,17 +1,35 @@
 {
   "name": "template-generate",
   "version": "1.0.0",
-  "description": "",
+  "description": "A tool library for automatically generating code based on plop and babel",
   "main": "index.js",
   "bin": "bin/index.js",
+  "type": "module",
+  "author": {
+    "name": "shaw",
+    "email": "kormondor.1994@gmail.com",
+    "url": "https://github.com/tool-package-plan"
+  },
+  "homepage": "https://github.com/tool-package-plan/template-generate",
+  "repository": {
+    "url": "https://github.com/tool-package-plan/template-generate"
+  },
+  "bugs": {
+    "url": "https://github.com/tool-package-plan/template-generate/issues"
+  },
+  "keywords": [
+    "Vue3",
+    "template",
+    "Vue",
+    "Plop",
+    "generator",
+    "typescript"
+  ],
+  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "type": "module",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@babel/generator": "^7.20.5",
     "@babel/parser": "^7.20.5",
