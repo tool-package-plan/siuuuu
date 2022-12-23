@@ -3,19 +3,19 @@ import { getRoutesPath, isFileExist } from './utils/shared.js';
 import { parse } from '@babel/parser';
 import { editRouterAst } from './utils/ast.js';
 
-export declare interface IRouteConfig {
+export declare interface IRouteItem {
   name: string;
   path: string;
   component: string;
 }
 
-const generateRouteItem = (routerData: Record<string, any>): IRouteConfig => ({
+const generateRouteItem = (routerData: Record<string, any>): IRouteItem => ({
   name: routerData.name,
   path: routerData.path,
   component: routerData.component,
 });
 
-const modifyRouteFile = (routeItem: IRouteConfig) => {
+const modifyRouteFile = (routeItem: IRouteItem) => {
   const routePath = getRoutesPath();
   if (isFileExist(routePath)) {
     console.log('file loaded');
@@ -33,7 +33,35 @@ const modifyRouteFile = (routeItem: IRouteConfig) => {
   }
 };
 
+/**
+ * @description 通过babel将route文件转为AST并将传入的router信息插入到路由文件中
+ * @param routerData
+ */
 export const addRouteItem = (routerData: Record<string, any>) => {
   const routeItem = generateRouteItem(routerData);
   modifyRouteFile(routeItem);
 };
+
+/**
+ * @description 通过传入的name自动生成一个简单的route对象信息
+ * @returns {IRouteItem}
+ */
+export const createAutoRouteItem = (routeName: string): IRouteItem => ({
+  name: routeName,
+  path: `/${routeName}`,
+  component: `@/view/${routeName}.vue`,
+});
+
+/**
+ *
+ * @param routeAnswer
+ * @description 将plop中关于route的answer转化为IRouteItem
+ * @returns {IRouteItem}
+ */
+export const routeAnswerToRouteItem = (
+  routeAnswer: Record<string, string>
+): IRouteItem => ({
+  name: routeAnswer.routeName,
+  path: routeAnswer.path,
+  component: routeAnswer.component,
+});

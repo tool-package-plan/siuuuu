@@ -2,14 +2,14 @@ import traverse from '@babel/traverse';
 import type { ParseResult } from '@babel/parser';
 import * as type from '@babel/types';
 import generator from '@babel/generator';
-import { IRouteConfig } from 'plop-templates/actions.js';
+import { IRouteItem } from 'plop-templates/actions.js';
 import chalk from 'chalk';
 
 const getRoutePathToAttribute = ({
   name,
   path: routePath,
   component,
-}: IRouteConfig): type.ObjectExpression => {
+}: IRouteItem): type.ObjectExpression => {
   return type.objectExpression([
     type.objectProperty(type.identifier('name'), type.stringLiteral(name)),
     type.objectProperty(type.identifier('path'), type.stringLiteral(routePath)),
@@ -46,7 +46,7 @@ const dealRoutes = (path: any, insertNode: type.ObjectExpression) => {
 // 这个函数会重写传入的routeAST对象内容
 export const editRouterAst = (
   routeAST: ParseResult<type.File>,
-  routeConfig: IRouteConfig
+  routeConfig: IRouteItem
 ): string => {
   traverse.default(routeAST, {
     enter(path: any) {

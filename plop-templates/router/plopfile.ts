@@ -1,10 +1,14 @@
 import type { NodePlopAPI } from 'node-plop';
 import { createInputPlop } from '../snippet.js';
-import { addRouteItem } from '../actions.js';
+import {
+  addRouteItem,
+  createAutoRouteItem,
+  routeAnswerToRouteItem,
+} from '../actions.js';
 
 export default function (plop: NodePlopAPI) {
   plop.setActionType(
-    'addRouter',
+    'addRoute',
     (answers: Record<string, any>, config, plop) => {
       addRouteItem(config);
       return '123';
@@ -36,12 +40,13 @@ export default function (plop: NodePlopAPI) {
     ],
     actions: (data: any) => {
       console.log(data);
+      const routerItem = data.autoMapping
+        ? createAutoRouteItem(data.routeName)
+        : routeAnswerToRouteItem(data);
       return [
         {
-          type: 'addRouter',
-          name: data.routeName,
-          path: data.path,
-          component: data.component,
+          type: 'addRoute',
+          ...routerItem,
         },
       ];
     },
