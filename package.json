@@ -1,5 +1,5 @@
 {
-  "name": "template-generate",
+  "name": "siuuuu",
   "version": "1.0.2",
   "description": "A tool library for automatically generating code based on plop and babel",
   "main": "index.js",
@@ -10,12 +10,12 @@
     "email": "kormondor.1994@gmail.com",
     "url": "https://github.com/tool-package-plan"
   },
-  "homepage": "https://github.com/tool-package-plan/template-generate",
+  "homepage": "https://github.com/tool-package-plan/siuuuu",
   "repository": {
-    "url": "https://github.com/tool-package-plan/template-generate"
+    "url": "https://github.com/tool-package-plan/siuuuu"
   },
   "bugs": {
-    "url": "https://github.com/tool-package-plan/template-generate/issues"
+    "url": "https://github.com/tool-package-plan/siuuuu/issues"
   },
   "keywords": [
     "Vue3",
