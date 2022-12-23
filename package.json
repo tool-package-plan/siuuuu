@@ -1,6 +1,6 @@
 {
   "name": "template-generate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool library for automatically generating code based on plop and babel",
   "main": "index.js",
   "bin": "bin/index.js",
