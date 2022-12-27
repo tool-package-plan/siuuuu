@@ -1,5 +1,4 @@
 node_modules
-plopfile.js
 src
 *.d.ts
 !types/*
