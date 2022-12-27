@@ -28,8 +28,7 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "commitizen-init": "commitizen init cz-conventional-changelog --save --save-exact"
+    "build": "tsc --build --clean && tsc --build"
   },
   "dependencies": {
     "@babel/generator": "^7.20.5",
