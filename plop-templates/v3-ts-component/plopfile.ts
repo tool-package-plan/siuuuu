@@ -8,7 +8,7 @@ export default function (plop: NodePlopAPI) {
   plop.setGenerator('v3-ts-component', {
     description: 'generate vue3 component with typescript',
     prompts: [
-      createInputPlop('componentName', '请输入组件名', true),
+      createInputPlop('name', '请输入组件名', true),
       {
         type: 'checkbox',
         name: 'blocks',
@@ -64,9 +64,22 @@ export default function (plop: NodePlopAPI) {
         message: '是否为全局组件?',
         default: false,
       },
+      {
+        type: 'confirm',
+        name: 'needRoute',
+        message: '是否要生成route配置',
+        default: true,
+      },
+      {
+        type: 'confirm',
+        name: 'autoRoute',
+        message: '是否自动生成route配置',
+        default: true,
+      },
     ],
     actions: (data: any) => {
-      const name = '{{dashCase componentName}}';
+      const name = data.name;
+      const formattedName = '{{dashCase name}}';
       const currentCwd = cwd();
       const relativePath = data.isGlobal
         ? `src/components/global/${name}/index.vue`
@@ -78,7 +91,7 @@ export default function (plop: NodePlopAPI) {
           path: path.resolve(currentCwd, relativePath),
           templateFile: './template.hbs',
           data: {
-            name: name,
+            name: formattedName,
             template: data.blocks.includes('template'),
             script: data.blocks.includes('script'),
             style: data.blocks.includes('style'),

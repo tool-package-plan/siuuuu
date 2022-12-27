@@ -2,6 +2,8 @@ import { readFileSync, writeFileSync } from 'fs';
 import { getRoutesPath, isFileExist } from './shared.js';
 import { parse } from '@babel/parser';
 import { editRouterAst } from './ast.js';
+import chalk from 'chalk';
+import conf from '../config.js';
 
 export declare interface IRouteItem {
   name: string;
@@ -18,7 +20,6 @@ const generateRouteItem = (routerData: Record<string, any>): IRouteItem => ({
 const modifyRouteFile = (routeItem: IRouteItem) => {
   const routePath = getRoutesPath();
   if (isFileExist(routePath)) {
-    console.log('file loaded');
     const fileContent = readFileSync(routePath, { encoding: 'utf8' });
     const routeAST = parse(fileContent, {
       errorRecovery: true,
@@ -28,9 +29,13 @@ const modifyRouteFile = (routeItem: IRouteItem) => {
     writeFileSync(routePath, editRouterAst(routeAST, routeItem), {
       encoding: 'utf-8',
     });
+    console.log(
+      chalk.green(`route添加成功,可以在${conf.routesFilePath}查看生成结果`)
+    );
   } else {
-    console.log(routePath);
-    console.log('file does not existed!');
+    console.log(
+      chalk.red(`未找到route的配置文件,请检查${conf.routesFilePath}是否存在`)
+    );
   }
 };
 
@@ -50,7 +55,7 @@ export const addRouteItem = (routerData: Record<string, any>) => {
 export const createAutoRouteItem = (routeName: string): IRouteItem => ({
   name: routeName,
   path: `/${routeName}`,
-  component: `@/view/${routeName}.vue`,
+  component: `@/view/${routeName}/index.vue`,
 });
 
 /**

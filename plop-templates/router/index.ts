@@ -8,18 +8,19 @@ const plop = await nodePlop(plopFilePath);
 
 const basicAdd = plop.getGenerator('router');
 
-export default async function () {
-  const answers = await basicAdd.runPrompts();
+export default async function (answers: any) {
+  if (!answers) {
+    answers = await basicAdd.runPrompts();
+  }
 
   const res = await basicAdd.runActions(answers);
 
   if (res.failures.length) {
-    console.log(res);
     console.log(
       chalk.red(
         'ERROR when',
         res.failures[0].type,
-        answers.componentName,
+        answers.name,
         res.failures[0].error
       )
     );

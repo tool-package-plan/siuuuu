@@ -79,7 +79,7 @@ pnpm add -D siuuuu
 
 ## TODO List
 
-- [ ] 添加view后可选是否自动生成route
+- [x] 添加view后可选是否自动生成route
 - [ ] 增加自动生成rc文件的命令
 - [ ] 增加对vue2的支持
 - [ ] 增加对store的支持

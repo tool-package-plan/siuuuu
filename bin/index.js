@@ -1,3 +1,3 @@
-import templateGenerate from '../index.js';
+import siuuuu from '../index.js';
 
-templateGenerate();
+siuuuu.run();

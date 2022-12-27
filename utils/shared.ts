@@ -2,6 +2,7 @@ import conf from '../config.js';
 import { existsSync, PathLike } from 'fs';
 import { dirname, join, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { createAutoRouteItem } from './actions.js';
 
 type CssProcessor = 'less' | 'scss' | 'css' | 'sass';
 
@@ -54,3 +55,8 @@ export const joinPath = (targetPath: string): string =>
   join(conf.baseDir, targetPath);
 
 export const getRoutesPath = (): string => joinPath(conf.routesFilePath);
+
+export const componentAnswerToRouteAnswer = (componentAnswer: any): any => {
+  const { name } = componentAnswer;
+  return { ...createAutoRouteItem(name), routeName: name };
+};

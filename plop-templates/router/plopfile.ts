@@ -32,14 +32,17 @@ export default function (plop: NodePlopAPI) {
         },
       },
       {
-        ...createInputPlop('component', '请输入组件路经,支持alias', true),
+        ...createInputPlop(
+          'component',
+          '请输入组件完整路经,支持alias,(eg. "@/views/account.vue")',
+          true
+        ),
         when({ autoMapping }) {
           return !autoMapping;
         },
       },
     ],
     actions: (data: any) => {
-      console.log(data);
       const routerItem = data.autoMapping
         ? createAutoRouteItem(data.routeName)
         : routeAnswerToRouteItem(data);
