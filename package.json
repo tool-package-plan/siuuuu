@@ -28,7 +28,8 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --build --clean && tsc --build"
+    "build": "tsc --build --clean && tsc --build",
+    "publish": "pnpm build && nrm use npm && pnpm publish"
   },
   "dependencies": {
     "@babel/generator": "^7.20.5",
