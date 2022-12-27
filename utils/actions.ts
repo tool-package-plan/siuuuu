@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { getRoutesPath, isFileExist } from './utils/shared.js';
+import { getRoutesPath, isFileExist } from './shared.js';
 import { parse } from '@babel/parser';
-import { editRouterAst } from './utils/ast.js';
+import { editRouterAst } from './ast.js';
 
 export declare interface IRouteItem {
   name: string;
@@ -29,6 +29,7 @@ const modifyRouteFile = (routeItem: IRouteItem) => {
       encoding: 'utf-8',
     });
   } else {
+    console.log(routePath);
     console.log('file does not existed!');
   }
 };

@@ -1,4 +1,4 @@
-import conf from '../../config.js';
+import conf from '../config.js';
 import { existsSync, PathLike } from 'fs';
 import { dirname, join, resolve } from 'path';
 import { fileURLToPath } from 'url';

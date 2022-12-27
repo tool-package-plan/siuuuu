@@ -1,5 +1,5 @@
 import type { PromptQuestion } from 'node-plop';
-import { validateRequiredString } from './utils/shared.js';
+import { validateRequiredString } from './shared.js';
 
 export const createInputPlop = (
   name: string,

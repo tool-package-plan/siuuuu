@@ -1,10 +1,10 @@
 import type { NodePlopAPI } from 'node-plop';
-import { createInputPlop } from '../snippet.js';
+import { createInputPlop } from '../../utils/snippet.js';
 import {
   addRouteItem,
   createAutoRouteItem,
   routeAnswerToRouteItem,
-} from '../actions.js';
+} from '../../utils/actions.js';
 
 export default function (plop: NodePlopAPI) {
   plop.setActionType(
