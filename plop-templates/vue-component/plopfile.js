@@ -2,11 +2,27 @@ import path from 'path';
 import { createInputPlop } from '../../utils/snippet.js';
 import { cwd } from 'process';
 import { CSS_PROCESSORS } from '../../utils/shared.js';
+import conf from '../../config.js';
 export default function (plop) {
     plop.setGenerator('vue-ts-component', {
         description: 'generate vue3 component with typescript',
         prompts: [
             createInputPlop('name', '请输入组件名', true),
+            {
+                type: 'list',
+                name: 'type',
+                message: '请选择要插入的.vue文件类型',
+                choices: [
+                    {
+                        name: 'view',
+                        value: 'view',
+                    },
+                    {
+                        name: 'component',
+                        value: 'component',
+                    },
+                ],
+            },
             {
                 type: 'checkbox',
                 name: 'blocks',
@@ -59,12 +75,18 @@ export default function (plop) {
                 name: 'isGlobal',
                 message: '是否为全局组件?',
                 default: false,
+                when({ type }) {
+                    return type === 'component';
+                },
             },
             {
                 type: 'confirm',
                 name: 'needRoute',
                 message: '是否要生成route配置',
                 default: true,
+                when({ type }) {
+                    return type === 'view';
+                },
             },
             {
                 type: 'confirm',
@@ -79,14 +101,16 @@ export default function (plop) {
         actions: (data) => {
             const name = data.name;
             const formattedName = '{{dashCase name}}';
+            const isView = data.type === 'view';
             const currentCwd = cwd();
-            const relativePath = data.isGlobal
-                ? `src/components/global/${name}/index.vue`
-                : `src/components/${name}/index.vue`;
+            const relativeViewPath = `${conf.viewBasePath}/${name}/index.vue`;
+            const relativeComponentPath = data.isGlobal
+                ? `${conf.componentBasePath}/global/${name}/index.vue`
+                : `${conf.componentBasePath}/${name}/index.vue`;
             return [
                 {
                     type: 'add',
-                    path: path.resolve(currentCwd, relativePath),
+                    path: path.resolve(currentCwd, isView ? relativeViewPath : relativeComponentPath),
                     templateFile: './template.hbs',
                     data: {
                         name: formattedName,
