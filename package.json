@@ -30,7 +30,7 @@
     "test": "NODE_ENV=unit vitest run",
     "test-c": "vitest --coverage",
     "build": "tsc --build --clean && tsc --build",
-    "publish": "pnpm build && nrm use npm && pnpm publish"
+    "pub": "pnpm build && nrm use npm && pnpm publish"
   },
   "dependencies": {
     "@babel/generator": "^7.20.5",
