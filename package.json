@@ -27,7 +27,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
+    "test-c": "vitest --coverage",
     "build": "tsc --build --clean && tsc --build",
     "publish": "pnpm build && nrm use npm && pnpm publish"
   },
@@ -45,8 +46,12 @@
     "rc": "^1.2.8"
   },
   "devDependencies": {
+    "@types/babel__generator": "^7.6.4",
+    "@types/babel__traverse": "^7.18.3",
     "@types/inquirer": "^9.0.3",
-    "cz-conventional-changelog": "^3.3.0"
+    "@vitest/coverage-c8": "^0.26.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "vitest": "^0.25.6"
   },
   "config": {
     "commitizen": {

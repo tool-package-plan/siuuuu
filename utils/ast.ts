@@ -1,8 +1,8 @@
-import traverse from '@babel/traverse';
 import type { ParseResult } from '@babel/parser';
 import * as type from '@babel/types';
 import generator from '@babel/generator';
 import { IRouteItem } from 'utils/actions.js';
+import traverse from '@babel/traverse';
 import chalk from 'chalk';
 
 const getRoutePathToAttribute = ({

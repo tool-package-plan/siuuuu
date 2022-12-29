@@ -5,3 +5,5 @@ src
 !env.d.ts
 dist
 !bin/*
+
+coverage

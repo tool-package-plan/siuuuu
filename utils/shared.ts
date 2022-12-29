@@ -57,6 +57,9 @@ export const joinPath = (targetPath: string): string =>
 export const getRoutesPath = (): string => joinPath(conf.routesFilePath);
 
 export const componentAnswerToRouteAnswer = (componentAnswer: any): any => {
+  if (!componentAnswer || !componentAnswer.name) {
+    throw new Error('error componentAnswer');
+  }
   const { name } = componentAnswer;
   return { ...createAutoRouteItem(name), routeName: name };
 };

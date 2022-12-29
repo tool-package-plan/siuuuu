@@ -1,6 +1,6 @@
-import traverse from '@babel/traverse';
 import * as type from '@babel/types';
 import generator from '@babel/generator';
+import traverse from '@babel/traverse';
 import chalk from 'chalk';
 const getRoutePathToAttribute = ({ name, path: routePath, component, }) => {
     return type.objectExpression([

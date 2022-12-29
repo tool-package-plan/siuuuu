@@ -34,6 +34,9 @@ export const isFileExist = (path) => existsSync(path);
 export const joinPath = (targetPath) => join(conf.baseDir, targetPath);
 export const getRoutesPath = () => joinPath(conf.routesFilePath);
 export const componentAnswerToRouteAnswer = (componentAnswer) => {
+    if (!componentAnswer || !componentAnswer.name) {
+        throw new Error('error componentAnswer');
+    }
     const { name } = componentAnswer;
     return { ...createAutoRouteItem(name), routeName: name };
 };

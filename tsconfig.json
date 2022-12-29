@@ -13,5 +13,5 @@
     "declarationDir": "./types",
   },
   "include": ["**/*.ts", "bin/index.js"],
-  "exclude": ["dist/**/*.d.ts", "bin","types"]
+  "exclude": ["dist/**/*.d.ts", "bin","types","vite.config.ts","**/*.spec.ts"]
 }
