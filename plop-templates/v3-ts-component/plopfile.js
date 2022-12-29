@@ -71,6 +71,9 @@ export default function (plop) {
                 name: 'autoRoute',
                 message: '是否自动生成route配置',
                 default: true,
+                when({ needRoute }) {
+                    return needRoute;
+                },
             },
         ],
         actions: (data) => {

@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "vitest",
+    "test": "NODE_ENV=unit vitest run",
     "test-c": "vitest --coverage",
     "build": "tsc --build --clean && tsc --build",
     "publish": "pnpm build && nrm use npm && pnpm publish"

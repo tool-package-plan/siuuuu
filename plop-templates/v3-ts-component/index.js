@@ -6,8 +6,10 @@ import conf from '../../config.js';
 const plopfilePath = getPlopFile(import.meta.url);
 const plop = await nodePlop(plopfilePath);
 const basicAdd = plop.getGenerator('v3-ts-component');
-export default async function () {
-    const answers = await basicAdd.runPrompts();
+export default async function (answers) {
+    if (process.env.NODE_ENV !== 'unit' && !answers) {
+        answers = await basicAdd.runPrompts();
+    }
     basicAdd.runActions(answers).then((res) => {
         if (res.failures.length) {
             console.log(chalk.red('ERROR when', res.failures[0].type, answers.name, res.failures[0].error));

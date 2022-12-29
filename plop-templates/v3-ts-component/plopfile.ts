@@ -75,6 +75,9 @@ export default function (plop: NodePlopAPI) {
         name: 'autoRoute',
         message: '是否自动生成route配置',
         default: true,
+        when({ needRoute }) {
+          return needRoute;
+        },
       },
     ],
     actions: (data: any) => {
@@ -84,7 +87,6 @@ export default function (plop: NodePlopAPI) {
       const relativePath = data.isGlobal
         ? `src/components/global/${name}/index.vue`
         : `src/components/${name}/index.vue`;
-
       return [
         {
           type: 'add',
