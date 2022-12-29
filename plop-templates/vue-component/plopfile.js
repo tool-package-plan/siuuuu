@@ -3,7 +3,7 @@ import { createInputPlop } from '../../utils/snippet.js';
 import { cwd } from 'process';
 import { CSS_PROCESSORS } from '../../utils/shared.js';
 export default function (plop) {
-    plop.setGenerator('v3-ts-component', {
+    plop.setGenerator('vue-ts-component', {
         description: 'generate vue3 component with typescript',
         prompts: [
             createInputPlop('name', '请输入组件名', true),

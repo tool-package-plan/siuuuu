@@ -1,8 +1,8 @@
 import inquirer from 'inquirer';
-import v3TsComponent from './plop-templates/v3-ts-component/index.js';
+import vueComponent from './plop-templates/vue-component/index.js';
 import routerTemplate from './plop-templates/router/index.js';
 const plopComponentMap = {
-    v3: v3TsComponent,
+    vue: vueComponent,
     route: routerTemplate,
 };
 const promptOptions = [
@@ -13,8 +13,8 @@ const promptOptions = [
         choices: [
             {
                 name: 'vue3组件-Component',
-                value: 'v3',
-                short: 'v3',
+                value: 'vue',
+                short: 'vue',
             },
             {
                 name: 'Router Item',
@@ -31,7 +31,7 @@ const promptOptions = [
     },
 ];
 class Siuuuu {
-    v3 = v3TsComponent;
+    vue = vueComponent;
     route = routerTemplate;
     promptOptions;
     constructor() {

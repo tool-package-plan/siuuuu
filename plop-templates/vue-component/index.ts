@@ -11,7 +11,7 @@ const plopfilePath = getPlopFile(import.meta.url);
 
 const plop = await nodePlop(plopfilePath);
 
-const basicAdd = plop.getGenerator('v3-ts-component');
+const basicAdd = plop.getGenerator('vue-ts-component');
 
 export default async function (answers: any) {
   if (process.env.NODE_ENV !== 'unit' && !answers) {

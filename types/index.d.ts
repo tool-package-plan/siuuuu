@@ -1,5 +1,5 @@
 declare class Siuuuu {
-    v3: Function;
+    vue: Function;
     route: Function;
     promptOptions: Record<string, any>[];
     constructor();
